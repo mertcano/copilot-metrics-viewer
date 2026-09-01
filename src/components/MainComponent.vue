@@ -27,7 +27,10 @@
     </v-toolbar>
 
     <!-- API Error Message -->
-    <div v-if="apiError && !signInRequired" class="error-message" v-html="apiError"></div>
+    <!-- Rendered as text, not HTML: `apiError` is built from upstream API error
+         messages, so v-html here made any markup an attacker could get into a
+         GitHub API error response execute in the viewer's page. -->
+    <div v-if="apiError && !signInRequired" class="error-message">{{ apiError }}</div>
     <div v-if="signInRequired" class="github-login-container">
       <a href="/login" class="github-login-button">
         <v-icon left>mdi-github</v-icon>
