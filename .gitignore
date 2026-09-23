@@ -4,6 +4,11 @@ node_modules
 
 
 # local env files
+# Security fix (audit): .env and api/.env were tracked in git even though
+# they hold GitHub tokens/secrets placeholders. Ignore them; use the
+# committed .env.example templates instead.
+.env
+api/.env
 .env.local
 .env.*.local
 
